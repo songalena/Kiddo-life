@@ -7,7 +7,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Age</mat-label>
-    <mat-select [(ngModel)]="age" name="age">
+    <mat-select [(ngModel)]="age" name="age" multiple>
       @for (age of ages; track age) {
       <mat-option [value]="age">{{age}}</mat-option>
       }
@@ -16,7 +16,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Area</mat-label>
-    <mat-select [(ngModel)]="area" name="area">
+    <mat-select [(ngModel)]="area" name="area" multiple>
       @for (area of areas; track area) {
       <mat-option [value]="area">{{area}}</mat-option>
       }
@@ -25,7 +25,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Price</mat-label>
-    <mat-select [(ngModel)]="price" name="price">
+    <mat-select [(ngModel)]="price" name="price" multiple>
       @for (price of prices; track price) {
       <mat-option [value]="price">{{price}}</mat-option>
       }
@@ -34,7 +34,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Category</mat-label>
-    <mat-select [(ngModel)]="category" name="category">
+    <mat-select [(ngModel)]="category" name="category" multiple>
       @for (category of categories; track category) {
       <mat-option [value]="category">{{category}}</mat-option>
       }

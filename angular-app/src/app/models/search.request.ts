@@ -1,7 +1,7 @@
 export class SearchRequest {
     search = '';
-    age = '';
-    price = '';
-    area = '';
-    category = '';
+    age = [];
+    price = [];
+    area = [];
+    category = [];
 }

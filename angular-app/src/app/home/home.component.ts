@@ -20,11 +20,11 @@ export class HomeComponent {
 
   categories = ['', 'Restaurant', 'Cafe'];
 
-  age = '';
+  age = [];
   search = '';
-  area = '';
-  price = '';
-  category = '';
+  area = [];
+  price = [];
+  category = [];
 
   constructor(private placesService: PlacesService) {
     this.subscription = this.searchSubject
@@ -59,11 +59,11 @@ export class HomeComponent {
   }
 
   onClearSelection() {
-    this.age = '';
+    this.age = [];
     this.search = '';
-    this.area = '';
-    this.price = '';
-    this.category = '';
+    this.area = [];
+    this.price = [];
+    this.category = [];
     this.onSearch();
   }
 }

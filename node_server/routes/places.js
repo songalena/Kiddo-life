@@ -1,7 +1,7 @@
 const express = require("express");
 const Place = require("../models/place");
 const router = express.Router();
-const { Op:{iLike, or, and, eq} } = require('sequelize');
+const { Op:{iLike, or, and, eq }, Op } = require('sequelize');
 
 router.get("/test", async (req, res) => {
   console.log("Places works");
@@ -35,10 +35,10 @@ router.post("/search", async (req, res) => {
   }
 });
 
-function addEqualityCondition(conditions, fieldName, fieldValue) {
-  if (fieldValue !== '') {
+function addEqualityCondition(conditions, fieldName, fieldValues) {
+  if (fieldValues.length > 0) {
     conditions.push({
-      [fieldName]: {[eq]: fieldValue}
+      [fieldName]: {[Op.in]: fieldValues}
     })
   }
 }
