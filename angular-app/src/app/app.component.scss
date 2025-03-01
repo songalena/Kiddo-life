@@ -1,0 +1,43 @@
+.content {
+  display: flex;
+  margin: 130px auto 32px;
+  padding: 0 16px;
+  max-width: 960px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between; /* Align items to the left and right */
+  padding: 0 15px; /* Add padding on both sides */
+}
+
+.main-title {
+  font-family: "Darumadrop One", serif;
+  font-size: 40px; 
+  font-weight: bold; 
+  margin-bottom: 30px;
+  text-align: center;
+  color: #1790BF;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 15px;
+  height: 160px;
+}
+
+.toolbar-actions {
+  display: flex;
+  margin-right: 30px;
+  align-items: center;
+  gap: 10px; /* Space between elements */
+}

@@ -1,0 +1,50 @@
+const express = require('express');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
+const router = express.Router();
+
+router.get('/test', async (req, res) => {
+  console.log('Auth works')
+  res.json({message: 'auth works'})
+})
+
+router.post('/register', async (req, res) => {
+  const { username, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    const newUser = await User.create({
+      username,
+      password: hashedPassword
+    });
+    res.json({ message: "User registered successfully" });
+    console.log('created a new user')
+  } catch (error) {
+    res.status(500).json({ message: "Error registering new user", error: error });
+    console.error('Error occured while creating user' + error)
+  }
+});
+
+
+router.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const user = await User.findOne({ where: { username } });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
+
+    const token = jwt.sign({ id: user.id }, 'secretkey', { expiresIn: '1h' }); // Use a more secure secret key and manage via environment variables
+    res.json({ message: "Logged in successfully", token });
+  } catch (error) {
+    res.status(500).json({ message: "Error logging in", error: error });
+  }
+});
+
+module.exports = router;

@@ -1,0 +1,14 @@
+form {
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+
+    > :last-child {
+        grid-column: span 3;
+        gap: 20px;
+        display: flex;
+        justify-self: end;
+      }
+}

@@ -1,0 +1,38 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<style>
+
+
+  
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    alt="KiddoLife Logo"
+    src="../assets/images/logo_kiddolife.png"
+  />
+  <div class="toolbar-actions">
+    <button mat-icon-button [matMenuTriggerFor]="langMenu">
+      <mat-icon style="color: #D91A4D;">language</mat-icon>
+    </button>
+    <mat-menu #langMenu="matMenu">
+      <button mat-menu-item>English</button>
+      <button mat-menu-item>Русский</button>
+    </mat-menu>
+
+    <a routerLink="/register" mat-button>Register</a>
+    <a routerLink="/login" mat-button>Sign In</a>
+  </div>
+</div>
+
+<main class="content" role="main">
+  <router-outlet></router-outlet>
+</main>

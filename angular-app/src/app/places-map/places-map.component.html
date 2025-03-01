@@ -1,0 +1,14 @@
+<google-map [center]="center" [zoom]="zoom">
+    <map-marker
+      *ngFor="let marker of markers"
+      #mapMarker="mapMarker"
+      [position]="marker.position"
+      [label]="marker.label"
+      [title]="marker.title"
+      [options]="marker.options"
+      (mapClick)="openInfoWindow(marker.branch, mapMarker)"
+    ></map-marker>
+    <map-info-window>
+        {{selectedBranch()?.name}}
+    </map-info-window>
+  </google-map>
