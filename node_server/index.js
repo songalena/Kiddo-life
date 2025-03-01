@@ -7,6 +7,7 @@ const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser');
 const sequelize = require('./config/database'); // The path might vary
+const path = require('path')
 
 const port = process.env.PORT || 3000;
 
@@ -64,6 +65,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use('/auth', auth)
 app.use('/places', places)
 app.use(cors())
+app.use(express.static(path.join(__dirname,'public')));
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
