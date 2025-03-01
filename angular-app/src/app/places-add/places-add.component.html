@@ -1,1 +1,65 @@
-<p>places-add works!</p>
+<mat-card appearance="outlined">
+    <mat-card-header>
+        <h2>Profile</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <form (ngSubmit)="onCreate()">
+            <mat-form-field appearance="fill">
+                <mat-label for="name">Name</mat-label>
+                <input type="name" id="name" [(ngModel)]="name" name="name" placeholder="Name of the place" required
+                    matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label for="description">Description</mat-label>
+                <textarea id="description" [(ngModel)]="description" name="description"
+                    placeholder="Description" required matInput></textarea>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Age</mat-label>
+                <mat-select [(ngModel)]="age" name="age" required>
+                    @for (age of ages; track age) {
+                    <mat-option [value]="age">{{age}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Area</mat-label>
+                <mat-select [(ngModel)]="area" name="area" required>
+                    @for (area of areas; track area) {
+                    <mat-option [value]="area">{{area}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Price</mat-label>
+                <mat-select [(ngModel)]="price" name="price" required>
+                    @for (price of prices; track price) {
+                    <mat-option [value]="price">{{price}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Category</mat-label>
+                <mat-select [(ngModel)]="category" name="category" required>
+                    @for (category of categories; track category) {
+                    <mat-option [value]="category">{{category}}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label for="imageUrl">Image Url</mat-label>
+                <input type="url" id="imageUrl" [(ngModel)]="imageUrl" name="imageUrl" placeholder="Image Url" required
+                    matInput>
+            </mat-form-field>
+
+            <div>
+                <button type="submit" mat-raised-button>Create</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

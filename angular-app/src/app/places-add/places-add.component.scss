@@ -1,0 +1,22 @@
+form {
+    display: grid;
+    flex-direction: row;
+    align-items: center;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+  
+    > :first-child, 
+    > :nth-child(2),
+    > :nth-last-child(2) {
+      grid-column: span 4;
+      gap: 20px;
+      display: flex;
+      justify-self: end;
+      width: 100%;
+    }
+  
+    > :last-child {
+      grid-column: span 4;
+      margin-left: auto;
+    }
+  }

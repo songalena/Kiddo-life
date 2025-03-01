@@ -12,13 +12,10 @@ export class HomeComponent {
   searchSubject: Subject<string> = new Subject();
   subscription: Subscription;
 
-  ages = ['', '0+', '3+', '6+', '12+'];
-
-  areas = ['', 'Mirabod', 'Yonusobod'];
-
-  prices = ['', '$', '$$', '$$$', '$$$$'];
-
-  categories = ['', 'Restaurant', 'Cafe'];
+  ages: string[] = [];
+  areas: string[] = [];
+  prices: string[] = [];
+  categories: string[] = [];
 
   age = [];
   search = '';
@@ -27,6 +24,11 @@ export class HomeComponent {
   category = [];
 
   constructor(private placesService: PlacesService) {
+    this.ages = placesService.ages;
+    this.areas = placesService.areas;
+    this.prices = placesService.prices;
+    this.categories = placesService.categories;
+
     this.subscription = this.searchSubject
       .pipe(debounceTime(300))
       .subscribe((r) => {
