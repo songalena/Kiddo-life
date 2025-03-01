@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   private baseUrl = 'http://localhost:3000/auth'; // Adjust as per your API
   private token = '';
+  private username = '';
 
   constructor(private http: HttpClient,
     private router: Router
@@ -24,6 +25,7 @@ export class AuthService {
     return this.http.post<LoginResponse>(`${this.baseUrl}/login`, { username, password })
     .pipe(tap(response => {
       this.token = response.token;
+      this.username = username;
     }));
   }
 
@@ -37,6 +39,15 @@ export class AuthService {
 
   logOut() {
     this.token = '';
+    this.username = '';
     this.router.navigate(['']);
+  }
+
+  getUsername() {
+    return this.username;
+  }
+
+  updateProfile(username: string) {
+    return this.http.post<SuccessResponse>(`${this.baseUrl}/update-profile`, { username });
   }
 }

@@ -10,21 +10,22 @@ import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SuccessResponse } from '../models/success-response';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
-export class HttpErrorSnackbarInterceptor implements HttpInterceptor {
-  constructor(private snackBar: MatSnackBar) {}
+export class TokenInterceptor implements HttpInterceptor {
+  constructor(private authService: AuthService) {}
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
-      catchError((ev: HttpErrorResponse) => {
-        console.error(ev)
-        const dbErrorsDescriptions = ev.error?.error?.errors?.map((er: SuccessResponse) => er.message)?.join(' ') ?? '';
-        this.snackBar.open(`${ev.error?.message}. ${dbErrorsDescriptions}`, 'Close');
-        return throwError(() => ev);
-      })
-    );
+    if (this.authService.isAuthenticated()) {
+      const token = this.authService.getToken();
+      req = req.clone({
+        headers: req.headers.set('Authorization', `Bearer ${token}`),
+      });
+    }
+
+    return next.handle(req);
   }
 }

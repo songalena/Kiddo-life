@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { FormsModule } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
@@ -9,17 +10,20 @@ import { FormsModule } from '@angular/forms';
   standalone: false
 })
 export class ProfileComponent {
-  email: string = '';
   username: string = '';
 
-  constructor(private auth: AuthService) {
-
+  constructor(private auth: AuthService,
+    private snackBar: MatSnackBar
+  ) {
+    this.username = this.auth.getUsername();
   }
   onLogOut() {
     this.auth.logOut();
   }
 
   onUpdate() {
-
+    this.auth.updateProfile(this.username).subscribe(response => {
+      this.snackBar.open(response?.message, 'Ok');
+    })
   }
 }
