@@ -1,3 +1,3 @@
-export class SuccessResponse {
-    message: string = '';
+export interface SuccessResponse {
+    message: string;
 }

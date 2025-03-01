@@ -28,8 +28,10 @@
       <button mat-menu-item>Русский</button>
     </mat-menu>
 
-    <a routerLink="/register" mat-button>Register</a>
-    <a routerLink="/login" mat-button>Sign In</a>
+    <a routerLink="/register" mat-button *ngIf="!isAuthenticated()">Register</a>
+    <a routerLink="/login" mat-button *ngIf="!isAuthenticated()">Sign In</a>
+    <a routerLink="/add-place" mat-button *ngIf="isAuthenticated()">Add Place</a>
+    <a routerLink="/profile" mat-button *ngIf="isAuthenticated()">Profile</a>
   </div>
 </div>
 

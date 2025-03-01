@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from './auth/auth.service';
 
 @Component({
     selector: 'app-root',
@@ -10,7 +11,9 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'kiddo-life';
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+    private authService: AuthService
+  ) {
     
   }
 
@@ -21,5 +24,9 @@ export class AppComponent implements OnInit {
         this.router.navigateByUrl('')
       })
     }
+  }
+
+  isAuthenticated() {
+    return this.authService.isAuthenticated();
   }
 }

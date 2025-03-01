@@ -29,6 +29,7 @@ import { HttpErrorSnackbarInterceptor } from './services/http-error-snackbar.int
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { RegisterComponent } from './auth/register/register.component';
 import { LoginComponent } from './auth/login/login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { LoginComponent } from './auth/login/login.component';
     HomeComponent,
     RegisterComponent,
     LoginComponent,
+    ProfileComponent
   ],
   imports: [
     FormsModule,
