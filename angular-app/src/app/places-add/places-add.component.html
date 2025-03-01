@@ -3,7 +3,7 @@
         <h2>Profile</h2>
     </mat-card-header>
     <mat-card-content>
-        <form (ngSubmit)="onCreate()">
+        <form (ngSubmit)="onCreate()" #form>
             <mat-form-field appearance="fill">
                 <mat-label for="name">Name</mat-label>
                 <input type="name" id="name" [(ngModel)]="name" name="name" placeholder="Name of the place" required
@@ -58,7 +58,7 @@
             </mat-form-field>
 
             <div>
-                <button type="submit" mat-raised-button>Create</button>
+                <button type="submit" mat-raised-button [disabled]="!form.checkValidity()">Create</button>
             </div>
         </form>
     </mat-card-content>
