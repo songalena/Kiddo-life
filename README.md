@@ -29,4 +29,3 @@ node index.js
 
 ## SQL Client
 As a PosgresSQL client - a PG admin can be used [link](https://www.postgresql.org/ftp/pgadmin/pgadmin4/v9.0/macos/). 
-
