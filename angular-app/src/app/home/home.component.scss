@@ -1,14 +1,20 @@
 form {
-    display: grid;
-    flex-direction: row;
-    align-items: center;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
+  display: grid;
+  flex-direction: row;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
 
-    > :last-child {
-        grid-column: span 3;
-        gap: 20px;
-        display: flex;
-        justify-self: end;
-      }
+  > :first-child {
+    grid-column: span 4;
+    gap: 20px;
+    display: flex;
+    justify-self: end;
+    width: 100%;
+  }
+
+  > :last-child {
+    grid-column: span 4;
+    margin-left: auto;
+  }
 }
