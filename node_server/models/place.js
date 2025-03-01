@@ -38,6 +38,11 @@ const Place = sequelize.define('Place', {
     type: DataTypes.DOUBLE,
     allowNull: false
   },
+  approval_status: {
+    type: DataTypes.ENUM,
+    values: ['Active', 'Draft', 'Rejected'],
+    defaultValue: 'Active'
+  },
 }, {
 
 });

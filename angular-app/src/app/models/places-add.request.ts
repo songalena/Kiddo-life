@@ -6,4 +6,6 @@ export interface PlacesAddRequest {
   name: string;
   description: string;
   imageUrl: string;
+  longitude: number;
+  latitude: number;
 }

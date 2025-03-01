@@ -17,6 +17,8 @@ export class PlacesAddComponent {
   name = '';
   description = '';
   imageUrl = '';
+  latitude = -1;
+  longitude = -1;
 
   ages: string[] = [];
   areas: string[] = [];
@@ -41,6 +43,8 @@ export class PlacesAddComponent {
       name: this.name,
       description: this.description,
       imageUrl: this.imageUrl,
+      latitude: this.latitude,
+      longitude: this.longitude
     }).subscribe(res => {
       this.snakBar.open('Thanks! Your suggesting will be reviewed and approved byt the administrator.', 'Ok')
     })

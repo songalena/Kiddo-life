@@ -52,6 +52,18 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
+                <mat-label for="latitude">Latitude</mat-label>
+                <input type="number" step=".0000001" id="latitude" [(ngModel)]="latitude" name="latitude" placeholder="Latitude. Can be taken from Google Maps" required
+                    matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label for="longitude">longitude</mat-label>
+                <input type="number" step=".0000001" id="longitude" [(ngModel)]="longitude" name="longitude" placeholder="Longitude. Can be taken from Google Maps" required
+                    matInput>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
                 <mat-label for="imageUrl">Image Url</mat-label>
                 <input type="url" id="imageUrl" [(ngModel)]="imageUrl" name="imageUrl" placeholder="Image Url" required
                     matInput>
