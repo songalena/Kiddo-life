@@ -32,6 +32,7 @@
     <a routerLink="/login" mat-button *ngIf="!isAuthenticated()">Sign In</a>
     <a routerLink="/add-place" mat-button *ngIf="isAuthenticated()">Add Place</a>
     <a routerLink="/profile" mat-button *ngIf="isAuthenticated()">Profile</a>
+    <a routerLink="/approve-places" mat-button *ngIf="isAdmin()">Approve Places</a>
   </div>
 </div>
 

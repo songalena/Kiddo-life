@@ -12,6 +12,7 @@ export class AuthService {
   private baseUrl = 'http://localhost:3000/auth'; // Adjust as per your API
   private token = '';
   private username = '';
+  private isAdminFlag = false;
 
   constructor(private http: HttpClient,
     private router: Router
@@ -26,6 +27,7 @@ export class AuthService {
     .pipe(tap(response => {
       this.token = response.token;
       this.username = username;
+      this.isAdminFlag = response.isAdmin;
     }));
   }
 
@@ -40,6 +42,7 @@ export class AuthService {
   logOut() {
     this.token = '';
     this.username = '';
+    this.isAdminFlag = false;
     this.router.navigate(['']);
   }
 
@@ -49,5 +52,9 @@ export class AuthService {
 
   updateProfile(username: string) {
     return this.http.post<SuccessResponse>(`${this.baseUrl}/update-profile`, { username });
+  }
+
+  isAdmin() {
+    return this.isAdminFlag;
   }
 }

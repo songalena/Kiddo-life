@@ -42,3 +42,25 @@ form {
 app-places-add {
   width: 100%;
 }
+
+.restaurant-card {
+  .row {
+    padding: 16px 16px;
+    display: flex;
+    flex-direction: row;
+
+    > img {
+      max-width: 50%;
+    }
+
+    p {
+      padding: 8px;
+    }
+
+    mat-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}

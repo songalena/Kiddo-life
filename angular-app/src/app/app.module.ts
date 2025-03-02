@@ -32,6 +32,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { TokenInterceptor } from './services/token.interceptor';
 import { PlacesAddComponent } from './places-add/places-add.component';
+import { ApprovePlacesComponent } from './approve-places/approve-places.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { PlacesAddComponent } from './places-add/places-add.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    PlacesAddComponent
+    PlacesAddComponent,
+    ApprovePlacesComponent
   ],
   imports: [
     FormsModule,
