@@ -5,6 +5,7 @@ const {
   Op: { iLike, or, and, eq },
   Op,
 } = require("sequelize");
+const {admin} = require("../middleware/admin");
 
 router.get("/test", async (req, res) => {
   console.log("Places works");
@@ -82,6 +83,51 @@ router.post("/add", async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({ message: "Error searcing places", error: error });
+  }
+});
+
+router.get("/get-drafts", admin, async (req, res) => {
+  try {
+    const places = await Place.findAll({ where: { approval_status: "Draft" } });
+    res.json(places);
+  } catch (error) {
+    res.status(500).json({ message: "Error searcing places", error: error });
+  }
+});
+
+router.post("/approve", admin, async (req, res) => {
+  try {
+    const {placeId} = req.body;
+
+    const place = await Place.findOne({ where: { id: placeId } });
+    place.approval_status = "Active";
+    await place.save();
+    
+    res.json({
+      message:
+        "Place has been approved.",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error approving a place", error: error });
+  }
+});
+
+router.post("/reject", admin, async (req, res) => {
+  try {
+    const {placeId} = req.body;
+
+    const place = await Place.findOne({ where: { id: placeId } });
+    place.approval_status = "Rejected";
+    await place.save();
+
+    res.json({
+      message:
+        "Place has been rejected.",
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error rejecting a place", error: error });
   }
 });
 

@@ -9,8 +9,8 @@ const admin = async (req, res, next) => {
     return res.status(401).json({ error: "Access denied. No token provided." });
 
   try {
-    const decode = jwt.verify(token, JWT_SECRET);
-    req.user = decode;
+    const user = jwt.verify(token, JWT_SECRET);
+    req.user = user;
 
     const isAdminRole = await isAdmin(user.id);
     if (!isAdminRole) {
@@ -18,6 +18,7 @@ const admin = async (req, res, next) => {
     }
     next();
   } catch (error) {
+    console.error(error);
     res.status(400).json({ error: "Invalid Token" });
   }
 };
