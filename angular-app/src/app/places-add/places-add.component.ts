@@ -46,7 +46,7 @@ export class PlacesAddComponent {
       latitude: this.latitude,
       longitude: this.longitude
     }).subscribe(res => {
-      const text = $localize `Thanks! Your suggesting will be reviewed and approved byt the administrator.`;
+      const text = $localize `Thanks! Your suggestion will be reviewed and approved by the administrator.`;
       this.snakBar.open(text, 'Ok')
     })
   }

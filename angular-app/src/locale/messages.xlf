@@ -331,7 +331,7 @@
         </context-group>
       </trans-unit>
       <trans-unit id="4721754352143742554" datatype="html">
-        <source>Thanks! Your suggesting will be reviewed and approved byt the administrator.</source>
+        <source>Thanks! Your suggestion will be reviewed and approved by the administrator.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/places-add/places-add.component.ts</context>
           <context context-type="linenumber">49</context>

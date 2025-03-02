@@ -9,6 +9,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PlacesService } from '../services/places-service';
+import { of } from 'rxjs';
 
 describe('PlacesAddComponent', () => {
   let component: PlacesAddComponent;
@@ -35,5 +37,37 @@ describe('PlacesAddComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+
+  it('should initialize dropdown values from service', () => {
+    expect(component.ages).toEqual(['0+', '3+', '6+', '12+']);
+    expect(component.areas).toEqual(['Mirabod', 'Yonusobod']);
+    expect(component.prices).toEqual(['$', '$$', '$$$', '$$$$']);
+    expect(component.categories).toEqual(['Restaurant', 'Cafe']);
+  });
+
+  it('should call addPlace and show snackbar on form submission', () => {
+    const placesService = fixture.debugElement.injector.get(PlacesService);
+    spyOn(placesService, 'addPlace').and.returnValue(of({ message: 'Success' }));
+    spyOn(component['snakBar'], 'open');
+
+    component.onCreate();
+
+    expect(placesService.addPlace).toHaveBeenCalledWith({
+      age: '',
+      area: '',
+      price: '',
+      category: '',
+      name: '',
+      description: '',
+      imageUrl: '',
+      latitude: -1,
+      longitude: -1
+    });
+    expect(component['snakBar'].open).toHaveBeenCalledWith(
+      'Thanks! Your suggestion will be reviewed and approved by the administrator.',
+      'Ok'
+    );
   });
 });
