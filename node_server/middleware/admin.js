@@ -19,7 +19,8 @@ const admin = async (req, res, next) => {
     next();
   } catch (error) {
     console.error(error);
-    res.status(400).json({ error: "Invalid Token" });
+    console.error("Invalid Token " + token );
+    res.status(400).json({ error: "Invalid Token " + token });
   }
 };
 

@@ -40,5 +40,11 @@ node index.js
 ```
 3. Open promted address in your browser. This should be [this address](http://localhost:3000)
 
+To run the tests type the command
+npm test
+```console
+npm test
+```
+
 ## SQL Client
 As a PosgresSQL client - a PG admin can be used [link](https://www.postgresql.org/ftp/pgadmin/pgadmin4/v9.0/macos/). 

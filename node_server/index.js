@@ -1,18 +1,18 @@
-const auth = require('./routes/auth')
-const places = require('./routes/places')
-const express = require('express')
-const swaggerUi = require('swagger-ui-express');
-const swaggerJsDoc = require('swagger-jsdoc');
-const app = express()
-const cors = require('cors')
-const bodyParser = require('body-parser');
-const sequelize = require('./config/database'); // The path might vary
-const path = require('path')
+const {authRouter, createRoles, createDefaultAdminUser} = require("./routes/auth");
+const places = require("./routes/places");
+const express = require("express");
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsDoc = require("swagger-jsdoc");
+const app = express();
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const sequelize = require("./config/database"); // The path might vary
+const path = require("path");
 
 const port = process.env.PORT || 3000;
 
 // sequelize.sync({ force: true });
-sequelize.sync();
+// sequelize.sync();
 
 // support parsing of application/json type post data
 app.use(bodyParser.json());
@@ -22,51 +22,66 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Add headers before the routes are defined
 app.use(function (req, res, next) {
+  // Website you wish to allow to connect
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:4200");
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  // Request methods you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
+  );
 
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  // Request headers you wish to allow
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type,Authorization"
+  );
 
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization');
+  // Set to true if you need the website to include cookies in the requests sent
+  // to the API (e.g. in case you use sessions)
+  res.setHeader("Access-Control-Allow-Credentials", true);
 
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    next();
+  // Pass to next layer of middleware
+  next();
 });
-
-
 
 // Swagger setup
 const swaggerOptions = {
   swaggerDefinition: {
-    myapi: '3.0.0',
+    myapi: "3.0.0",
     info: {
-      title: 'My API',
-      version: '1.0.0',
-      description: 'API documentation',
+      title: "My API",
+      version: "1.0.0",
+      description: "API documentation",
     },
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: "http://localhost:3000",
       },
     ],
   },
-  apis: ['./routes/*.js'], // files containing annotations as above
+  apis: ["./routes/*.js"], // files containing annotations as above
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-app.use('/auth', auth)
-app.use('/places', places)
-app.use(cors())
-app.use(express.static(path.join(__dirname,'public')));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/auth", authRouter);
+app.use("/places", places);
+app.use(cors());
+app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-  })
+if (require.main === module) {
+  console.log('Bumping the app from index.js')
+  initializeApp().then(() => {
+    app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+    });
+  });
+}
+
+async function initializeApp() {
+  await createRoles();
+  await createDefaultAdminUser();
+}
+
+module.exports = {app, initializeApp};

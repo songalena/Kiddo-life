@@ -112,23 +112,32 @@ router.post("/update-profile", auth, async (req, res) => {
 });
 
 async function createDefaultAdminUser() {
-  const users = await User.findAll();
-  if (users.length > 0) {
+  const user = await User.findOne({where: {username: admin_name}});
+  if (user !== null) {
     return;
   }
 
-  const hashedPassword = await bcrypt.hash(admin_password, 10);
-  const createdUser = await User.create({
-    username: admin_name,
-    password: hashedPassword,
-  });
-
-  const role = await getAdminRole();
-
-  await UserToRole.create({
-    user_id: createdUser.id,
-    role_id: role.id,
-  });
+  try {
+    console.log('Admin user ');
+    console.log(user);
+  
+    const hashedPassword = await bcrypt.hash(admin_password, 10);
+    const createdUser = await User.create({
+      username: admin_name,
+      password: hashedPassword,
+    });
+  
+    const role = await getAdminRole();
+  
+    await UserToRole.create({
+      user_id: createdUser.id,
+      role_id: role.id,
+    });
+  }
+  catch(error) {
+    console.error(error);
+    throw error;
+  }
 }
 
 async function createRoles() {
@@ -146,8 +155,4 @@ async function createRoles() {
   });
 }
 
-createRoles().then((r) => {
-  createDefaultAdminUser();
-});
-
-module.exports = router;
+module.exports = {authRouter: router, createRoles, createDefaultAdminUser};
