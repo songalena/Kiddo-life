@@ -24,6 +24,12 @@ ng build
 npm run start-locales
 ```
 
+### Running the tests
+```console
+cd angular-app
+ng test
+```
+
 ## REST API
 1. Check that node.js in installed on your machine.
 2. In terminal go to Node app directory. Install the packages, then run the app.
