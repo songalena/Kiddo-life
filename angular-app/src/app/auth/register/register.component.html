@@ -1,25 +1,27 @@
 <mat-card appearance="outlined">
   <mat-card-header>
-    <h2>Register</h2>
+    <h2 i18n>Register</h2>
   </mat-card-header>
   <mat-card-content>
     <form (ngSubmit)="onRegister()">
       <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Enter email" required matInput>
+        <mat-label i18n>Email</mat-label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Enter email" required matInput
+          i18n-placeholder>
       </mat-form-field>
       <mat-form-field appearance="fill">
-        <mat-label for="password">Password</mat-label>
+        <mat-label for="password" i18n>Password</mat-label>
         <input type="password" id="password" [(ngModel)]="password" name="password" placeholder="Enter password"
-          required matInput>
+          required matInput i18n-placeholder>
       </mat-form-field>
       <div class="form-links">
-        <a (click)="onForgotPassword()" mat-button>Forgot password?</a>
+        <a (click)="onForgotPassword()" mat-button i18n>Forgot password?</a>
       </div>
-      <button type="submit" mat-raised-button>Register</button>
-      <p class="login-link">
-        Already have an account? <a routerLink="/login" mat-button>Login</a>
-      </p>
+      <button type="submit" mat-raised-button i18n>Register</button>
+      <div class="login-link">
+        <p i18n>Already have an account?</p>
+        <a routerLink="/login" mat-button i18n>Login</a>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

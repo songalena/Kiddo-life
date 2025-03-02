@@ -1,15 +1,15 @@
 <mat-card appearance="outlined">
     <mat-card-header>
-      <h2>Profile</h2>
+      <h2 i18n>Profile</h2>
     </mat-card-header>
     <mat-card-content>
       <form (ngSubmit)="onUpdate()">
         <mat-form-field appearance="fill">
-          <mat-label for="username">Username</mat-label>
-          <input type="username" id="username" [(ngModel)]="username" name="username" placeholder="Username" matInput>
+          <mat-label for="username" i18n>Username</mat-label>
+          <input type="username" id="username" [(ngModel)]="username" name="username" placeholder="Username" matInput i18n-placeholder>
         </mat-form-field>
-        <button type="submit" mat-raised-button>Update</button>
-        <button type="button" mat-button (click)="onLogOut()">Log Out</button>
+        <button type="submit" mat-raised-button i18n>Update</button>
+        <button type="button" mat-button (click)="onLogOut()" i18n>Log Out</button>
       </form>
     </mat-card-content>
   </mat-card>

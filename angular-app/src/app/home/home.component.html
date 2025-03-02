@@ -1,12 +1,12 @@
-<h1 class="main-title">We can help you find the best kids' experiences</h1>
+<h1 class="main-title" i18n>We can help you find the best kids' experiences</h1>
 <form (ngSubmit)="onSearch()">
   <mat-form-field appearance="fill">
-    <mat-label>Search</mat-label>
-    <input matInput placeholder="Ex. Tanuki" (input)="onSearchInputChange($event.target)" [(ngModel)]="search" name="search">
+    <mat-label i18n>Search</mat-label>
+    <input matInput placeholder="Ex. Tanuki" (input)="onSearchInputChange($event.target)" [(ngModel)]="search" name="search" i18n-placeholder>
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Age</mat-label>
+    <mat-label i18n>Age</mat-label>
     <mat-select [(ngModel)]="age" name="age" multiple>
       @for (age of ages; track age) {
       <mat-option [value]="age">{{age}}</mat-option>
@@ -15,7 +15,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Area</mat-label>
+    <mat-label i18n>Area</mat-label>
     <mat-select [(ngModel)]="area" name="area" multiple>
       @for (area of areas; track area) {
       <mat-option [value]="area">{{area}}</mat-option>
@@ -24,7 +24,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Price</mat-label>
+    <mat-label i18n>Price</mat-label>
     <mat-select [(ngModel)]="price" name="price" multiple>
       @for (price of prices; track price) {
       <mat-option [value]="price">{{price}}</mat-option>
@@ -33,7 +33,7 @@
   </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Category</mat-label>
+    <mat-label i18n>Category</mat-label>
     <mat-select [(ngModel)]="category" name="category" multiple>
       @for (category of categories; track category) {
       <mat-option [value]="category">{{category}}</mat-option>
@@ -42,18 +42,18 @@
   </mat-form-field>
 
   <div>
-    <button type="button" mat-button (click)="onClearSelection()">Clear Selection</button>
-    <button type="submit" mat-raised-button>Search</button>
+    <button type="button" mat-button (click)="onClearSelection()" i18n>Clear Selection</button>
+    <button type="submit" mat-raised-button i18n>Search</button>
   </div>
 </form>
 
 <mat-tab-group>
-  <mat-tab label="Places list">
+  <mat-tab label="Places list" i18n-label>
     <div class="content">
       <app-places-list></app-places-list>
     </div>
   </mat-tab>
-  <mat-tab label="Map">
+  <mat-tab label="Map" i18n-label>
     <div class="content">
       <app-places-map></app-places-map>
     </div>

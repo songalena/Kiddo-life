@@ -17,6 +17,13 @@ ng serve
 ```
 3. Open promted address in your browser. This should be [this address](http://localhost:4200)
 
+### If you would like to run all supported locales at a time, you need to use another set of commands.
+```console
+cd angular-app
+ng build
+npm run start-locales
+```
+
 ## REST API
 1. Check that node.js in installed on your machine.
 2. In terminal go to Node app directory. Install the packages, then run the app.

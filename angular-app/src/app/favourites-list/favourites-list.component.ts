@@ -18,6 +18,5 @@ export class FavouritesListComponent implements OnInit {
       this.places = res;
     });
   }
-
   
 }

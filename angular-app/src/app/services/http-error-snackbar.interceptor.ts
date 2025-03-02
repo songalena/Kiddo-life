@@ -22,7 +22,7 @@ export class HttpErrorSnackbarInterceptor implements HttpInterceptor {
       catchError((ev: HttpErrorResponse) => {
         console.error(ev)
         const dbErrorsDescriptions = ev.error?.error?.errors?.map((er: SuccessResponse) => er.message)?.join(' ') ?? '';
-        this.snackBar.open(`${ev.error?.message}. ${dbErrorsDescriptions}`, 'Close');
+        this.snackBar.open(`${ev.error?.message}. ${dbErrorsDescriptions}`, $localize `Close`);
         return throwError(() => ev);
       })
     );

@@ -1,15 +1,11 @@
 import {
-  HttpErrorResponse,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
-  HttpResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, throwError } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { SuccessResponse } from '../models/success-response';
+import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 
 @Injectable()

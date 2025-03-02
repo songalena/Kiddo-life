@@ -17,24 +17,24 @@
 <div class="toolbar" role="banner">
   <img
     alt="KiddoLife Logo"
-    src="../assets/images/logo_kiddolife.png"
+    src="assets/images/logo_kiddolife.png"
   />
   <div class="toolbar-actions">
     <button mat-icon-button [matMenuTriggerFor]="langMenu">
       <mat-icon style="color: #D91A4D;">language</mat-icon>
     </button>
     <mat-menu #langMenu="matMenu">
-      <button mat-menu-item>English</button>
-      <button mat-menu-item>Русский</button>
+      <a mat-menu-item href="/en-US">English</a>
+      <a mat-menu-item href="/ru">Русский</a>
     </mat-menu>
 
-    <a routerLink="" mat-button>Home</a>
-    <a routerLink="/register" mat-button *ngIf="!isAuthenticated()">Register</a>
-    <a routerLink="/login" mat-button *ngIf="!isAuthenticated()">Sign In</a>
-    <a routerLink="/add-place" mat-button *ngIf="isAuthenticated()">Add Place</a>
-    <a routerLink="/profile" mat-button *ngIf="isAuthenticated()">Profile</a>
-    <a routerLink="/favourites-list" mat-button *ngIf="isAuthenticated()">Favourites</a>
-    <a routerLink="/approve-places" mat-button *ngIf="isAdmin()">Approve Places</a>
+    <a routerLink="" mat-button i18n>Home</a>
+    <a routerLink="/register" mat-button *ngIf="!isAuthenticated()" i18n>Register</a>
+    <a routerLink="/login" mat-button *ngIf="!isAuthenticated()" i18n>Sign In</a>
+    <a routerLink="/add-place" mat-button *ngIf="isAuthenticated()" i18n>Add Place</a>
+    <a routerLink="/profile" mat-button *ngIf="isAuthenticated()" i18n>Profile</a>
+    <a routerLink="/favourites-list" mat-button *ngIf="isAuthenticated()" i18n>Favourites</a>
+    <a routerLink="/approve-places" mat-button *ngIf="isAdmin()" i18n>Approve Places</a>
   </div>
 </div>
 

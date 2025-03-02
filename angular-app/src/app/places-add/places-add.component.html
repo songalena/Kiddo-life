@@ -1,22 +1,22 @@
 <mat-card appearance="outlined">
     <mat-card-header>
-        <h2>Profile</h2>
+        <h2 i18n>Profile</h2>
     </mat-card-header>
     <mat-card-content>
         <form (ngSubmit)="onCreate()" #form>
             <mat-form-field appearance="fill">
-                <mat-label for="name">Name</mat-label>
+                <mat-label for="name" i18n>Name</mat-label>
                 <input type="name" id="name" [(ngModel)]="name" name="name" placeholder="Name of the place" required
-                    matInput>
+                    matInput i18n-placeholder>
             </mat-form-field>
             <mat-form-field appearance="fill">
-                <mat-label for="description">Description</mat-label>
-                <textarea id="description" [(ngModel)]="description" name="description"
-                    placeholder="Description" required matInput></textarea>
+                <mat-label for="description" i18n>Description</mat-label>
+                <textarea id="description" [(ngModel)]="description" name="description" placeholder="Description"
+                    required matInput i18n-placeholder></textarea>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Age</mat-label>
+                <mat-label i18n>Age</mat-label>
                 <mat-select [(ngModel)]="age" name="age" required>
                     @for (age of ages; track age) {
                     <mat-option [value]="age">{{age}}</mat-option>
@@ -25,7 +25,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Area</mat-label>
+                <mat-label i18n>Area</mat-label>
                 <mat-select [(ngModel)]="area" name="area" required>
                     @for (area of areas; track area) {
                     <mat-option [value]="area">{{area}}</mat-option>
@@ -34,7 +34,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Price</mat-label>
+                <mat-label i18n>Price</mat-label>
                 <mat-select [(ngModel)]="price" name="price" required>
                     @for (price of prices; track price) {
                     <mat-option [value]="price">{{price}}</mat-option>
@@ -43,7 +43,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label>Category</mat-label>
+                <mat-label i18n>Category</mat-label>
                 <mat-select [(ngModel)]="category" name="category" required>
                     @for (category of categories; track category) {
                     <mat-option [value]="category">{{category}}</mat-option>
@@ -52,25 +52,25 @@
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label for="latitude">Latitude</mat-label>
-                <input type="number" step=".0000001" id="latitude" [(ngModel)]="latitude" name="latitude" placeholder="Latitude. Can be taken from Google Maps" required
-                    matInput>
+                <mat-label for="latitude" i18n>Latitude</mat-label>
+                <input type="number" step=".0000001" id="latitude" [(ngModel)]="latitude" name="latitude"
+                    placeholder="Latitude. Can be taken from Google Maps" required matInput i18n-placeholder>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label for="longitude">longitude</mat-label>
-                <input type="number" step=".0000001" id="longitude" [(ngModel)]="longitude" name="longitude" placeholder="Longitude. Can be taken from Google Maps" required
-                    matInput>
+                <mat-label for="longitude" i18n>Longitude</mat-label>
+                <input type="number" step=".0000001" id="longitude" [(ngModel)]="longitude" name="longitude"
+                    placeholder="Longitude. Can be taken from Google Maps" required matInput i18n-placeholder>
             </mat-form-field>
 
             <mat-form-field appearance="fill">
-                <mat-label for="imageUrl">Image Url</mat-label>
+                <mat-label for="imageUrl" i18n>Image Url</mat-label>
                 <input type="url" id="imageUrl" [(ngModel)]="imageUrl" name="imageUrl" placeholder="Image Url" required
-                    matInput>
+                    matInput i18n-placeholder>
             </mat-form-field>
 
             <div>
-                <button type="submit" mat-raised-button [disabled]="!form.checkValidity()">Create</button>
+                <button type="submit" mat-raised-button [disabled]="!form.checkValidity()" i18n>Create</button>
             </div>
         </form>
     </mat-card-content>

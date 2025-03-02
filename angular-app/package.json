@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "start-locales": "http-server dist/kiddo-life/browser -p 4200",
+    "serve-ru": "ng serve --configuration=ru"
   },
   "private": true,
   "dependencies": {
@@ -21,6 +23,7 @@
     "@angular/platform-browser": "^19.0.3",
     "@angular/platform-browser-dynamic": "^19.0.3",
     "@angular/router": "^19.0.3",
+    "http-server": "^14.1.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
@@ -29,6 +32,7 @@
     "@angular-devkit/build-angular": "^19.0.4",
     "@angular/cli": "~19.0.4",
     "@angular/compiler-cli": "^19.0.3",
+    "@angular/localize": "^19.0.3",
     "@types/jasmine": "~4.3.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",

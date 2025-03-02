@@ -3,7 +3,7 @@
     <mat-card class="restaurant-card" appearance="outlined" *ngFor="let place of places">
         <mat-card-header>
             <mat-card-title>{{place.name}}</mat-card-title>
-            <mat-chip-set aria-label="Categoreis">
+            <mat-chip-set aria-label="Categoreis" i18n-aria-label>
                 <mat-chip *ngIf="place.age">{{place.age}}</mat-chip>
                 <mat-chip *ngIf="place.area">{{place.area}}</mat-chip>
                 <mat-chip *ngIf="place.category">{{place.category}}</mat-chip>
@@ -18,8 +18,8 @@
                 </p>
 
                 <mat-card-actions>
-                    <button mat-button *ngIf="isAuthenticated() && !place.isInFavourite" (click)="onLikeClicked(place)">LIKE</button>
-                    <button mat-button *ngIf="isAuthenticated() && place.isInFavourite" (click)="onUnlikeClicked(place)">REMOVE FROM FAVOURITES</button>
+                    <button mat-button *ngIf="isAuthenticated() && !place.isInFavourite" (click)="onLikeClicked(place)" i18n>LIKE</button>
+                    <button mat-button *ngIf="isAuthenticated() && place.isInFavourite" (click)="onUnlikeClicked(place)" i18n>REMOVE FROM FAVOURITES</button>
                 </mat-card-actions>
             </mat-card-content>
         </div>
