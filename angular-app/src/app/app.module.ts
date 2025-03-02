@@ -33,6 +33,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { TokenInterceptor } from './services/token.interceptor';
 import { PlacesAddComponent } from './places-add/places-add.component';
 import { ApprovePlacesComponent } from './approve-places/approve-places.component';
+import { FavouritesListComponent } from './favourites-list/favourites-list.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { ApprovePlacesComponent } from './approve-places/approve-places.componen
     LoginComponent,
     ProfileComponent,
     PlacesAddComponent,
-    ApprovePlacesComponent
+    ApprovePlacesComponent,
+    FavouritesListComponent
   ],
   imports: [
     FormsModule,

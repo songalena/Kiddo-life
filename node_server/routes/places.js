@@ -135,9 +135,11 @@ router.post("/reject", admin, async (req, res) => {
 
 router.get("/get-favourite-places", auth, async (req, res) => {
   try {
-    const favourites = await Favourite.findAll({
-      where: { user_id: req.user.id },
-    }).map((f) => f.place_id);
+    const favourites = (
+      await Favourite.findAll({
+        where: { user_id: req.user.id },
+      })
+    ).map((f) => f.place_id);
 
     const places = await Place.findAll({
       where: { ["id"]: { [Op.in]: favourites } },

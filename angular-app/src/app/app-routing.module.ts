@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AuthGuard } from './services/auth.guard';
 import { AdminGuard } from './services/admin.guard';
 import { ApprovePlacesComponent } from './approve-places/approve-places.component';
+import { FavouritesListComponent } from './favourites-list/favourites-list.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'add-place', component: PlacesAddComponent, canActivate: [AuthGuard] },
+  { path: 'favourites-list', component: FavouritesListComponent, canActivate: [AuthGuard] },
   { path: 'approve-places', component: ApprovePlacesComponent, canActivate: [AuthGuard, AdminGuard] },
   { path: '**', redirectTo: ''}
 ];

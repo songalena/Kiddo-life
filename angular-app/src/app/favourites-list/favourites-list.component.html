@@ -1,0 +1,22 @@
+<div class="content">
+
+    <mat-card class="restaurant-card" appearance="outlined" *ngFor="let place of places">
+        <mat-card-header>
+            <mat-card-title>{{place.name}}</mat-card-title>
+            <mat-chip-set aria-label="Categoreis">
+                <mat-chip *ngIf="place.age">{{place.age}}</mat-chip>
+                <mat-chip *ngIf="place.area">{{place.area}}</mat-chip>
+                <mat-chip *ngIf="place.category">{{place.category}}</mat-chip>
+                <mat-chip *ngIf="place.price">{{place.price}}</mat-chip>
+              </mat-chip-set>
+        </mat-card-header>
+        <div class="row">
+            <img mat-card-image [src]="place.image_src" [alt]="place.description">
+            <mat-card-content>
+                <p>
+                    {{place.description}}
+                </p>
+            </mat-card-content>
+        </div>
+    </mat-card>
+</div>
