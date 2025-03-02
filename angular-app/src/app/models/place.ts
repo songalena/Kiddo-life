@@ -9,4 +9,5 @@ export interface Place {
   age: string;
   price: string;
   area: string;
+  isInFavourite: boolean;
 }

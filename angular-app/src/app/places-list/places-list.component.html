@@ -18,8 +18,8 @@
                 </p>
 
                 <mat-card-actions>
-                    <button mat-button>LIKE</button>
-                    <button mat-button>SHARE</button>
+                    <button mat-button *ngIf="isAuthenticated() && !place.isInFavourite" (click)="onLikeClicked(place)">LIKE</button>
+                    <button mat-button *ngIf="isAuthenticated() && place.isInFavourite" (click)="onUnlikeClicked(place)">REMOVE FROM FAVOURITES</button>
                 </mat-card-actions>
             </mat-card-content>
         </div>

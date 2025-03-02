@@ -48,4 +48,16 @@ export class PlacesService {
   reject(request: StatusRequest) {
     return this.http.post<SuccessResponse>(`${this.baseUrl}/reject`, request);
   }
+
+  getFavouritePlaces() {
+    return this.http.get<Place[]>(`${this.baseUrl}/get-favourite-places`);
+  }
+
+  addToFavourite(request: StatusRequest) {
+    return this.http.post<SuccessResponse>(`${this.baseUrl}/add-favourite`, request);
+  }
+
+  removeFromFavourite(request: StatusRequest) {
+    return this.http.post<SuccessResponse>(`${this.baseUrl}/remove-favourite`, request);
+  }
 }
