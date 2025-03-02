@@ -42,4 +42,39 @@ describe('AppComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call isAuthenticated() and return false when user is not authenticated', () => {
+    spyOn(component, 'isAuthenticated').and.returnValue(false);
+    expect(component.isAuthenticated()).toBeFalse();
+  });
+
+  it('should call isAuthenticated() and return true when user is authenticated', () => {
+    spyOn(component, 'isAuthenticated').and.returnValue(true);
+    expect(component.isAuthenticated()).toBeTrue();
+  });
+
+  it('should call isAdmin() and return false when user is not admin', () => {
+    spyOn(component, 'isAdmin').and.returnValue(false);
+    expect(component.isAdmin()).toBeFalse();
+  });
+
+  it('should call isAdmin() and return true when user is admin', () => {
+    spyOn(component, 'isAdmin').and.returnValue(true);
+    expect(component.isAdmin()).toBeTrue();
+  });
+
+  it('should navigate to empty route if Safari is detected', async () => {
+    spyOnProperty(window.navigator, 'userAgent', 'get').and.returnValue('Safari');
+    const routerSpy = spyOn(component["router"], 'navigateByUrl');
+    component.ngOnInit();
+    await new Promise(resolve => setTimeout(resolve, 500));
+    expect(routerSpy).toHaveBeenCalledWith('');
+  });
+
+  it('should not navigate if Safari is not detected', () => {
+    spyOnProperty(window.navigator, 'userAgent', 'get').and.returnValue('Chrome');
+    const routerSpy = spyOn(component["router"], 'navigateByUrl');
+    component.ngOnInit();
+    expect(routerSpy).not.toHaveBeenCalled();
+  });
 });

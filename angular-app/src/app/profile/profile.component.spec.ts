@@ -9,6 +9,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthService } from '../auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { of } from 'rxjs';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -36,4 +39,30 @@ describe('ProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should initialize username with the value from AuthService', () => {
+    const authService = fixture.debugElement.injector.get(AuthService);
+    spyOn(authService, 'getUsername').and.returnValue('testuser');
+    const newComponent = new ProfileComponent(authService, {} as MatSnackBar);
+    expect(newComponent.username).toBe('testuser');
+  });
+
+  it('should call onLogOut and invoke AuthService logOut method', () => {
+    const authService = fixture.debugElement.injector.get(AuthService);
+    spyOn(authService, 'logOut');
+    component.onLogOut();
+    expect(authService.logOut).toHaveBeenCalled();
+  });
+
+  it('should call onUpdate and invoke AuthService updateProfile method', () => {
+    const authService = fixture.debugElement.injector.get(AuthService);
+    const mockedObservable = of({ message: 'Profile updated' });
+    spyOn(authService, 'updateProfile').and.returnValue(mockedObservable);
+    const snackBar = fixture.debugElement.injector.get(MatSnackBar);
+    spyOn(snackBar, 'open');
+    component.onUpdate();
+    expect(authService.updateProfile).toHaveBeenCalledWith(component.username);
+    expect(snackBar.open).toHaveBeenCalledWith('Profile updated', 'Ok');
+  });
+
 });

@@ -9,7 +9,6 @@ import { AuthService } from './auth/auth.service';
     standalone: false
 })
 export class AppComponent implements OnInit {
-  title = 'kiddo-life';
 
   constructor(private router: Router,
     private authService: AuthService
