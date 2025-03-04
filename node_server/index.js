@@ -11,7 +11,6 @@ const path = require("path");
 
 const port = process.env.PORT || 3000;
 
-// sequelize.sync({ force: true });
 // sequelize.sync();
 
 // support parsing of application/json type post data
@@ -72,11 +71,10 @@ app.use(express.static(path.join(__dirname, "public")));
 
 if (require.main === module) {
   console.log('Bumping the app from index.js')
-  initializeApp().then(() => {
+  sequelize.sync().then(()=>{initializeApp()})
     app.listen(port, () => {
       console.log(`Server running on port ${port}`);
     });
-  });
 }
 
 async function initializeApp() {
