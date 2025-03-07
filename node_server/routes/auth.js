@@ -42,7 +42,7 @@ router.post("/register", async (req, res) => {
     res
       .status(500)
       .json({ message: "Error registering new user", error: error });
-    console.error("Error occured while creating user" + error);
+    //console.error("Error occured while creating user" + error);
   }
 });
 

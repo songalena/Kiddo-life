@@ -14,9 +14,9 @@ export class PlacesService {
   placesList: Subject<Place[]> = new BehaviorSubject<Place[]>([]);
 
   public ages = ['0+', '3+', '6+', '12+'];
-  public areas = ['Mirabod', 'Yonusobod'];
+  public areas = ['Almazar', 'Bektemir', 'Mirabad', 'Mirzoulugbek', 'Sergeli', 'Chilanzar', 'Shaxantaur', 'Yunusobad', 'Yakkasaray', 'Yashnabad', 'Uchtepa'];
   public prices = ['$', '$$', '$$$', '$$$$'];
-  public categories = ['Restaurant', 'Cafe'];
+  public categories = ['Restaurant with playground', 'Indoor playground', 'Park', 'Master-class', 'Performance'];
 
 
   constructor(private http: HttpClient) {

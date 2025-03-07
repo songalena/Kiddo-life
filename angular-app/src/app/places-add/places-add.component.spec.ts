@@ -42,9 +42,9 @@ describe('PlacesAddComponent', () => {
 
   it('should initialize dropdown values from service', () => {
     expect(component.ages).toEqual(['0+', '3+', '6+', '12+']);
-    expect(component.areas).toEqual(['Mirabod', 'Yonusobod']);
+    expect(component.areas).toEqual(['Almazar', 'Bektemir', 'Mirabad', 'Mirzoulugbek', 'Sergeli', 'Chilanzar', 'Shaxantaur', 'Yunusobad', 'Yakkasaray', 'Yashnabad', 'Uchtepa']);
     expect(component.prices).toEqual(['$', '$$', '$$$', '$$$$']);
-    expect(component.categories).toEqual(['Restaurant', 'Cafe']);
+    expect(component.categories).toEqual(['Restaurant with playground', 'Indoor playground', 'Park', 'Master-class', 'Performance']);
   });
 
   it('should call addPlace and show snackbar on form submission', () => {

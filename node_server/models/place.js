@@ -7,7 +7,7 @@ const Place = sequelize.define('Place', {
     allowNull: false
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
     allowNull: false
   },
   category: {

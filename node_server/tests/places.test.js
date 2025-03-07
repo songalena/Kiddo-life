@@ -37,9 +37,9 @@ describe("Places Routes", () => {
       .send({
         search: "restaurant",
         age: ["3+"],
-        price: ["$", "$$"],
-        category: ["restaurants", "cafes"],
-        area: ["Chilonzor", "Mirzo Ulugbek"],
+        price: ["$", "$$$"],
+        category: ['Restaurant with playground'],
+        area: ['Almazar', 'Bektemir', 'Mirabad', 'Mirzoulugbek', 'Sergeli', 'Chilanzar', 'Shaxantaur', 'Yunusobad', 'Yakkasaray', 'Yashnabad', 'Uchtepa'],
       });
 
     expect(response.status).toBe(200);
@@ -48,9 +48,9 @@ describe("Places Routes", () => {
 
     const places = response.body;
     places.forEach((place) => {
-      expect(["restaurants", "cafes"]).toContain(place.category);
+      expect(['Restaurant with playground']).toContain(place.category);
       expect(["3+"]).toContain(place.age);
-      expect(["Chilonzor", "Mirzo Ulugbek"]).toContain(place.area);
+      expect(['Almazar', 'Bektemir', 'Mirabad', 'Mirzoulugbek', 'Sergeli', 'Chilanzar', 'Shaxantaur', 'Yunusobad', 'Yakkasaray', 'Yashnabad', 'Uchtepa']).toContain(place.area);
     });
   });
 
