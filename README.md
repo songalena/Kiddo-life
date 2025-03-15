@@ -17,7 +17,7 @@ ng serve
 ```
 3. Open promted address in your browser. This should be [this address](http://localhost:4200)
 
-### If you would like to run all supported locales at a time, you need to use another set of commands.
+### If you would like to run all supported locales at a time to make internationalization work, you need to use another set of commands.
 ```console
 cd angular-app
 ng build
